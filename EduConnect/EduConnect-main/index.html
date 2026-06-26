@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parent Edu Connect</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <section id="loginScreen" class="login-screen">
+      <div class="login-visual">
+        <p class="eyebrow">Parent Edu Connect</p>
+        <h1>Secure academic monitoring for every role.</h1>
+        <p>Choose a demo role to enter the AI dashboard for parents, teachers, or school administrators.</p>
+      </div>
+
+      <form id="loginForm" class="login-card">
+        <div>
+          <p class="eyebrow">Login</p>
+          <h2>Access Portal</h2>
+        </div>
+
+        <label for="roleSelect">Role</label>
+        <select id="roleSelect" required>
+          <option value="parent">Parent</option>
+          <option value="teacher">Teacher</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <label for="loginLanguageSelect">Language</label>
+        <select id="loginLanguageSelect">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="te">తెలుగు</option>
+          <option value="ta">தமிழ்</option>
+        </select>
+
+        <label for="loginEmail">Email</label>
+        <input id="loginEmail" type="email" value="parent@demo.edu" required>
+
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" type="password" value="parent123" required>
+
+        <p id="loginHint" class="login-hint">Demo: parent@demo.edu / parent123</p>
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">PE</span>
+          <div>
+            <strong>Parent Edu Connect</strong>
+            <small>AI Academic Analytics</small>
+          </div>
+        </div>
+
+        <nav class="nav-stack" aria-label="Main navigation">
+          <button class="nav-item active" data-view="parent">Parent Dashboard</button>
+          <button class="nav-item" data-view="teacher">Teacher Console</button>
+          <button class="nav-item" data-view="admin">Admin Analytics</button>
+          <button class="nav-item" data-view="profile">Student Profile</button>
+        </nav>
+
+        <div class="student-switcher">
+          <label for="studentSelect">Student</label>
+          <select id="studentSelect"></select>
+        </div>
+
+        <div class="student-switcher language-switcher">
+          <label for="languageSelect">Language</label>
+          <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="te">తెలుగు</option>
+            <option value="ta">தமிழ்</option>
+          </select>
+        </div>
+
+        <button id="themeToggle" class="ghost-button" type="button">Switch Theme</button>
+        <button id="logoutButton" class="ghost-button" type="button">Logout</button>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Smart monitoring workspace</p>
+            <h1 id="pageTitle">Parent Dashboard</h1>
+          </div>
+          <div class="topbar-actions">
+            <span id="riskBadge" class="risk-badge">Risk: Medium</span>
+            <button id="notifyButton" class="icon-button" type="button" aria-label="Notifications">!</button>
+          </div>
+        </header>
+
+        <section id="notificationTray" class="notification-tray hidden" aria-live="polite"></section>
+
+        <section id="parentView" class="view active-view">
+          <div class="hero-panel">
+            <div>
+              <p class="eyebrow">AI prediction summary</p>
+              <h2 id="studentHeadline">Sameed Khan is likely to improve in Mathematics</h2>
+              <p id="studentSummary"></p>
+            </div>
+            <div class="hero-metric">
+              <span id="nextScore">82</span>
+              <small>Predicted next exam score</small>
+            </div>
+          </div>
+
+          <div class="metric-grid" id="metricGrid"></div>
+
+          <div class="dashboard-grid">
+            <article class="panel wide">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Marks progression</p>
+                  <h3>Performance Growth</h3>
+                </div>
+                <select id="subjectFilter" aria-label="Subject filter"></select>
+              </div>
+              <canvas id="marksChart" height="210"></canvas>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Attendance</p>
+                  <h3>Monthly Trend</h3>
+                </div>
+              </div>
+              <canvas id="attendanceChart" height="210"></canvas>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Subject heatmap</p>
+                  <h3>Strength Analysis</h3>
+                </div>
+              </div>
+              <div id="heatmap" class="heatmap"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">AI insights</p>
+                  <h3>Prediction Panel</h3>
+                </div>
+              </div>
+              <div id="predictionList" class="insight-list"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Behavior</p>
+                  <h3>Complaints & Remarks</h3>
+                </div>
+              </div>
+              <div id="behaviorTimeline" class="timeline"></div>
+            </article>
+
+            <article class="panel wide">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Achievements</p>
+                  <h3>Certificates, Sports & Competitions</h3>
+                </div>
+              </div>
+              <div id="achievementGrid" class="achievement-grid"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="teacherView" class="view">
+          <div class="section-grid">
+            <article class="panel wide">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Bulk upload</p>
+                  <h3>Academic Record Entry</h3>
+                </div>
+              </div>
+              <form class="teacher-form">
+                <input type="text" placeholder="Subject">
+                <input type="number" placeholder="Marks">
+                <input type="number" placeholder="Attendance %">
+                <select>
+                  <option>Excellent behavior</option>
+                  <option>Needs attention</option>
+                  <option>Complaint raised</option>
+                </select>
+                <button type="submit">Queue Update</button>
+              </form>
+            </article>
+            <article class="panel">
+              <p class="eyebrow">Risk alerts</p>
+              <h3>Students Requiring Attention</h3>
+              <div id="teacherAlerts" class="insight-list"></div>
+            </article>
+            <article class="panel">
+              <p class="eyebrow">Class analytics</p>
+              <h3>Performance Spread</h3>
+              <canvas id="classChart" height="210"></canvas>
+            </article>
+            <article class="panel">
+              <p class="eyebrow">Prediction result</p>
+              <h3>Pass / Fail Estimate</h3>
+              <canvas id="teacherPassFailChart" height="210"></canvas>
+            </article>
+          </div>
+        </section>
+
+        <section id="adminView" class="view">
+          <div class="metric-grid admin-metrics">
+            <article class="metric-card"><span>1,248</span><small>Total Students</small></article>
+            <article class="metric-card"><span>96</span><small>Teachers</small></article>
+            <article class="metric-card"><span>88%</span><small>School Attendance</small></article>
+            <article class="metric-card"><span>142</span><small>AI Risk Alerts</small></article>
+          </div>
+          <div class="dashboard-grid">
+            <article class="panel wide">
+              <p class="eyebrow">System analytics</p>
+              <h3>School Performance Report</h3>
+              <canvas id="schoolChart" height="230"></canvas>
+            </article>
+            <article class="panel">
+              <p class="eyebrow">Prediction result</p>
+              <h3>Pass / Fail Estimate</h3>
+              <canvas id="passFailChart" height="230"></canvas>
+            </article>
+            <article class="panel">
+              <p class="eyebrow">Attendance</p>
+              <h3>Total Present / Absent</h3>
+              <canvas id="totalAttendanceChart" height="230"></canvas>
+            </article>
+            <article class="panel wide">
+              <p class="eyebrow">Student tracking</p>
+              <h3>Student Performance Monitoring</h3>
+              <div id="adminStudentTracker" class="data-table"></div>
+            </article>
+            <article class="panel">
+              <p class="eyebrow">Active logins</p>
+              <h3>Live Sessions</h3>
+              <div id="activeSessions" class="session-stack"></div>
+            </article>
+            <article class="panel">
+              <p class="eyebrow">User controls</p>
+              <h3>Account Status</h3>
+              <div id="accountStatus" class="session-stack"></div>
+            </article>
+            <article class="panel wide">
+              <p class="eyebrow">Login audit</p>
+              <h3>Recent Login History</h3>
+              <div id="loginAuditTable" class="data-table"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="profileView" class="view">
+          <article class="profile-card">
+            <div class="avatar" id="profileAvatar">SK</div>
+            <div>
+              <p class="eyebrow">Student profile</p>
+              <h2 id="profileName">Sameed Khan</h2>
+              <p id="profileMeta"></p>
+            </div>
+          </article>
+          <div id="profileDetails" class="profile-details"></div>
+        </section>
+      </main>
+
+      <aside class="chatbot">
+        <div class="chat-header">
+          <div>
+            <strong>AI Chatbot</strong>
+            <small>Personalized academic guide</small>
+          </div>
+          <span class="status-dot"></span>
+        </div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="quick-prompts">
+          <button data-intent="weak" type="button">Weak subject</button>
+          <button data-intent="predict" type="button">Predict math</button>
+          <button data-intent="complaints" type="button">Complaints</button>
+        </div>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" type="text" placeholder="Ask about marks, attendance, complaints...">
+          <button type="submit">Send</button>
+        </form>
+      </aside>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
